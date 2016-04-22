@@ -1,6 +1,7 @@
 from barpy.outputter.base import Outputter
 from PIL import Image
 
+
 class PngOutputter(Outputter):
 
     def to_image(self, **opts):
@@ -35,8 +36,8 @@ class PngOutputter(Outputter):
     def to_png(self, constraints=None, **kw):
         constraints = [constraints] if constraints else []
 
-        from StringIO import StringIO
-        strio = StringIO()
+        from io import BytesIO
+        strio = BytesIO()
 
         self.to_image(**kw).save(strio, format="png", **kw)
         strio.seek(0)
@@ -51,9 +52,10 @@ class PngOutputter(Outputter):
         self.xdim = int(value) / self.length
 
     __height = 0
+
     @property
     def height(self):
-        return self.ydim * len(self.encoding()) if self.barcode.is_two_dimensional else self.__height or 100
+        return self.ydim * len(list(self.encoding())) if self.barcode.is_two_dimensional else self.__height or 100
 
     @height.setter
     def height(self, value):
@@ -97,7 +99,7 @@ class PngOutputter(Outputter):
 
     @property
     def length(self):
-        return len(self.encoding()[0]) if self.barcode.is_two_dimensional else len(self.encoding())
+        return len(list(self.encoding())[0]) if self.barcode.is_two_dimensional else len(self.encoding())
 
     def __len__(self):
         return self.length

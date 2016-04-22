@@ -35,9 +35,9 @@ def maybe(func):
     return wrapper
 
 setup(name="barpy",
-      version="0.1.2",
-      url="http://github.com/kstep/barpy/",
-      description="Ruby barby barcodes generating library port to Python",
+      version="0.1.3a",
+      url="http://github.com/AlexDert/barpy",
+      description="Fork barby barcodes generating library port to Python 3",
       long_description=maybe(open)("README.txt").read(),
       author="Konstantin Stepanov",
       author_email="me@kstep.me",
@@ -47,7 +47,7 @@ setup(name="barpy",
           'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: BSD License',
           'Operating System :: POSIX',
-          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3.5',
           'Topic :: Software Development :: Libraries'
           ],
       install_requires=[

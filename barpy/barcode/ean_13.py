@@ -2,6 +2,7 @@
 from barpy.barcode.base import Barcode1D
 import re
 
+
 class EAN13(Barcode1D):
     LEFT_ENCODINGS_ODD = [
             '0001101', '0011001', '0010011',

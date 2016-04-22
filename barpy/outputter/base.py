@@ -2,6 +2,7 @@ from barpy.barcode.base import Barcode
 
 from contextlib import contextmanager
 
+
 class Outputter(object):
 
     def __init__(self, barcode):
@@ -9,7 +10,7 @@ class Outputter(object):
 
     @classmethod
     def register(cls, *method_names, **methods):
-        for name, method_name in methods.iteritems():
+        for name, method_name in methods.items():
             Barcode.register_outputter(name, cls, method_name)
 
         for name in method_names:
@@ -27,6 +28,7 @@ class Outputter(object):
             return map(lambda c: c == "1", self.encoding(reload))
 
     __encoding = None
+
     def encoding(self, reload=False):
         if reload or not self.__encoding:
             self.__encoding = self.barcode.encoding()
@@ -43,13 +45,13 @@ class Outputter(object):
                 self.encoding(reload))
         else:
             return map(lambda group: (group[0], len(list(group[1]))),
-                    groupby(self.encoding(reload), lambda c: c == "1"))
+                       groupby(self.encoding(reload), lambda c: c == "1"))
 
     @contextmanager
     def options(self, **options):
         original_options = {}
 
-        for k, v in options.iteritems():
+        for k, v in options.items():
             original_options[k] = getattr(self, k)
             setattr(self, k, v)
 
@@ -57,6 +59,6 @@ class Outputter(object):
             yield
 
         finally:
-            for k, v in original_options.iteritems():
+            for k, v in original_options.items():
                 setattr(self, k, v)
 

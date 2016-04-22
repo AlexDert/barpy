@@ -29,10 +29,12 @@ class Barcode(object):
             return getattr(klass(self), method_name)
 
         except (KeyError, AttributeError) as e:
-            raise AttributeError, e
+            raise (AttributeError, e)
+
 
 class Barcode1D(Barcode):
     pass
+
 
 class Barcode2D(Barcode):
     @property

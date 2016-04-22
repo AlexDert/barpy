@@ -1,6 +1,7 @@
 
 from barpy.outputter.base import Outputter
 
+
 class HtmlOutputter(Outputter):
 
     class_name = ""

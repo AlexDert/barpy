@@ -1,13 +1,13 @@
-
 from barpy.barcode.code_128 import Code128
+
 
 class GS1128(Code128):
 
     application_identifier = None
 
-    def __init__(self, data, type, ai):
+    def __init__(self, data, types, ai):
         self.application_identifier = ai
-        super(GS1128, self).__init__(data, type)
+        super(GS1128, self).__init__(data, types)
 
     @property
     def data(self):
@@ -31,6 +31,6 @@ class GS1128(Code128):
 
     def __str__(self):
         return "({application_identifier}) {partial_data}".format(
-                application_identifier=self.application_identifier,
-                partial_data=self.partial_data)
+            application_identifier=self.application_identifier,
+            partial_data=self.partial_data)
 
